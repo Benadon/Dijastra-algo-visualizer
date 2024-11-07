@@ -207,14 +207,14 @@ const findShortestPath = (el) => {
   for (i = 0; i < cnt; i++)
     parent[i] === undefined ? (parent[i] = source) : null;
   // console.log(parent);
-  indicatePath(parent, source);
+  indicatePath(parent, source, minCost);
 };
 
-const indicatePath = async (parentArr, src) => {
+const indicatePath = async (parentArr, src, minCost) => {
   document.getElementsByClassName("path")[0].innerHTML = "";
   for (i = 0; i < cnt; i++) {
     let p = document.createElement("p");
-    p.innerText = "Node " + i + " --> " + src;
+    p.innerText = "Node " + i + " --> " + src + " (Distance: " + minCost[i] + ")";
     await printPath(parentArr, i, p);
   }
 };
@@ -280,3 +280,5 @@ const wait = async (t) => {
   });
   res = await pr;
 };
+
+
